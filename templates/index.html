@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omer-Secure</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(to right, #007BFF, #0056b3);
+            color: #fff;
+        }
+
+        .header {
+            background-color: #001f3f;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .tool-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .tool {
+            background: #fff;
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tool:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .tool h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .tool a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            color: #fff;
+            background: #007BFF;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .tool a:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #001f3f;
+            color: #fff;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Omer-Secure Tools</h1>
+    </div>
+
+    <div class="container">
+        <h2>Choose a Tool</h2>
+        <div class="tool-box">
+            <div class="tool">
+                <h3>Homoglyph Spoofing</h3>
+                <p>Analyze and detect suspicious characters in URLs and emails.</p>
+                <a href="/homoglyph-spoofing-detector">Start Tool</a>
+            </div>
+            <div class="tool">
+                <h3>File Analyzer</h3>
+                <p>Upload a file to analyze its properties and potential risks.</p>
+                <a href="/file-analyzer">File Analyzer</a>
+            </div>
+            <div class="tool">
+                <h3>Encryption Tool</h3>
+                <p>Simple Encryption and Decryption tool using Multiple Ciphers.</p>
+                <a href="/encryption-tool">Start Tool</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Omer-Secure | All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>

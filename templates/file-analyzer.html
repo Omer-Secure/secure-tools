@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omer-Secure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 500px;
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .explanation {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+            background: #ffffff;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        .toggle-btn {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <h1>File Analyzer</h1>
+        <p>Upload a file to analyze its properties and potential risks.</p>
+        <input type="file" id="file-input">
+        <button id="analyze-btn">Analyze File</button>
+        <div class="result" id="result"></div>
+
+        <div class="mt-5">
+            <span class="toggle-btn" onclick="toggleExplanation()">What is File Analyzer?</span>
+            <div class="explanation" id="explanation">
+                <h3>What is File Analyzer?</h3>
+                <p> <strong>SecurityAnalyzr</strong> is a powerful file analysis tool designed for cybersecurity
+                    professionals to investigate suspicious files quickly and effectively. It integrates with VirusTotal and
+                    supports macro detection and phishing link analysis, providing comprehensive insights into potentially
+                    malicious attachments. </p>
+                <h3>Features</h3>
+                <ul>
+                    <li><strong>VirusTotal Integration:</strong> Automatically checks file hashes against VirusTotal to
+                        identify malicious files and malware families.</li>
+                    <li><strong>Macro Detection in Word Documents:</strong> Detects macros in both .doc and .docx files,
+                        highlighting potential malicious scripts.</li>
+                    <li><strong>Phishing Link Detection in PDFs:</strong> Scans PDF files for suspicious URLs, helping
+                        identify potential phishing attempts.</li>
+                    <li><strong>File Hashing:</strong> Generates SHA-256 hashes of files for comparison against known threat
+                        databases.</li>
+                    <li><strong>Real-Time Reporting:</strong> Outputs detailed results, including MIME type, file hash,
+                        virus status, and malware family information.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById("analyze-btn").addEventListener("click", () => {
+            const fileInput = document.getElementById("file-input");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a file.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/analyze-file", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    const resultDiv = document.getElementById("result");
+                    if (data.error) {
+                        resultDiv.textContent = "Error: " + data.error;
+                    } else {
+                        resultDiv.innerHTML = `
+                            <p><strong>File Name:</strong> ${data.file_name}</p>
+                            <p><strong>MIME Type:</strong> ${data.mime_type}</p>
+                            <p><strong>File Hash:</strong> ${data.file_hash}</p>
+                            <p><strong>Phishing Detected:</strong> ${data.phishing_detected ? "Yes" : "No"}</p>
+                        `;
+                    }
+                })
+                .catch((error) => {
+                    document.getElementById("result").textContent = "An error occurred.";
+                    console.error("Error:", error);
+                });
+        });
+
+        function toggleExplanation() {
+            const explanationDiv = document.getElementById('explanation');
+            explanationDiv.style.display = explanationDiv.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</body>
+
+</html>
