@@ -91,7 +91,7 @@ def check_homoglyph():
 
 ''' ------------------------------------------------------------------ '''
 # VirusTotal API Key
-API_KEY = os.environ.get("c6079ec6fba0024d60a180ca7ee9a19ca8a586c1367bc21fa842648582f90eaa", "")
+API_KEY = os.environ.get("VIRUSTOTAL_API_KEY", "")
 
 # Functions for file analysis
 def get_file_hash(file_path):
