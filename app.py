@@ -9,9 +9,6 @@ from PyPDF2 import PdfReader
 
 app = Flask(__name__)
 
-file_path = os.path.join("uploads", file.filename)
-os.makedirs("uploads", exist_ok=True)
-
 
 ''' ------------------------------------------------------------------ '''
 VALID_ASCII = "abcdefghijklmnopqrstuvwxyz0123456789.-"
