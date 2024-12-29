@@ -225,21 +225,17 @@
         <div class="project-boxes-div">
 
           <script>
-            // رابط ملف HTML الخاص بالمشروع الأول
             const url = 'https://raw.githubusercontent.com/Omer-Secure/Omer-Secure.github.io/main/index.html';
             const basePath = 'https://omer-secure.github.io/';
 
             fetch(url)
               .then(response => response.text())
               .then(html => {
-                // تحويل النص إلى DOM
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
 
-                // البحث عن العنصر المطلوب في المشروع الأول
                 const projectDiv = doc.querySelector('.project-boxes-div');
                 if (projectDiv) {
-                  // تحديث الروابط والصور في المحتوى المنقول
                   projectDiv.querySelectorAll('img').forEach(img => {
                     if (img.getAttribute('src') && !img.src.startsWith('http')) {
                       img.src = basePath + img.getAttribute('src');
@@ -252,7 +248,6 @@
                     }
                   });
 
-                  // إضافة محتويات المشروع الأول إلى العنصر في المشروع الثاني
                   document.querySelector('.project-boxes-div').innerHTML = projectDiv.innerHTML;
                 } else {
                   document.querySelector('.project-boxes-div').innerHTML = 'تعذر العثور على المحتوى المطلوب.';
