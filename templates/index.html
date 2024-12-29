@@ -226,7 +226,6 @@
 
           <script>
             const url = 'https://raw.githubusercontent.com/Omer-Secure/Omer-Secure.github.io/main/index.html';
-            const basePath = 'https://omer-secure.github.io/';
 
             fetch(url)
               .then(response => response.text())
@@ -237,14 +236,16 @@
                 const projectDiv = doc.querySelector('.project-boxes-div');
                 if (projectDiv) {
                   projectDiv.querySelectorAll('img').forEach(img => {
-                    if (img.getAttribute('src') && !img.src.startsWith('http')) {
-                      img.src = basePath + img.getAttribute('src');
+                    const imgSrc = img.getAttribute('src');
+                    if (imgSrc && !img.src.startsWith('http')) {
+                      img.src = imgSrc;
                     }
                   });
 
                   projectDiv.querySelectorAll('a').forEach(link => {
-                    if (link.getAttribute('href') && !link.href.startsWith('http')) {
-                      link.href = basePath + link.getAttribute('href');
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref && !link.href.startsWith('http')) {
+                      link.href = linkHref;
                     }
                   });
 
