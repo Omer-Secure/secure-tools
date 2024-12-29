@@ -364,7 +364,7 @@ def encryption_tool():
 
 @app.route('/')
 def homepage():
-    return render_template('index.html')
+    return redirect('https://omer-secure.github.io')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
