@@ -11,23 +11,16 @@ jobs:
   update-src:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project 2 Repository
-        uses: actions/checkout@v2
+      - name: Checkout second repository
+        uses: actions/checkout@v3
 
-      - name: Checkout Project 1 Repository
-        uses: actions/checkout@v2
-        with:
-          repository: Omer-Secure/Omer-Secure.github.io  # قم بتحديد المستودع الأول هنا
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Copy src Folder
+      - name: Add first repository as submodule
         run: |
-          cp -r Omer-Secure.github.io/src ./src  # نسخ مجلد src من المشروع الأول إلى المشروع الثاني
+          git submodule add https://github.com/Omer-Secure/Omer-Secure.github.io.git src
+          git submodule update --init --recursive
 
-      - name: Commit and Push changes
+      - name: Commit and push changes
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add src
-          git commit -m "Update src from project 1"
-          git push origin main
+          git add .
+          git commit -m "Update src folder from first repository"
+          git push
