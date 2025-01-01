@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, session
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
 import re
 import yara
 '''  '''
@@ -585,6 +585,42 @@ def keylogger_malware():
         session['user_id'] = str(uuid.uuid4())
     return render_template('keylogger-malware.html')
 '''
+''' ------------------------------------------------------------------ '''
+''' ------------------------------------------------------------------ '''
+
+
+''' ------------------------------------------------------------------ '''
+''' ------------------------------------------------------------------ '''
+app.secret_key = "ransomware_simulation_secret"  # مفتاح الجلسة
+
+# رمز فك الفدية
+UNLOCK_CODE = "omer-secure"
+
+@app.route("/lock", methods=["POST"])
+def lock():
+    # قفل الصفحة بناءً على طريقة الهجوم
+    attack_method = request.form.get("attack_method")
+    session["locked"] = True
+    session["attack_method"] = attack_method
+    return redirect(url_for("ransomware_malware"))
+
+@app.route("/unlock", methods=["POST"])
+def unlock():
+    # فك القفل إذا كان رمز فك الفدية صحيحًا
+    unlock_code = request.form.get("unlock_code")
+    if unlock_code == UNLOCK_CODE:
+        session.pop("locked", None)
+        session.pop("attack_method", None)
+        return redirect(url_for("ransomware_malware"))
+    else:
+        return render_template("ransomware-malware.html", locked=True, error="Incorrect unlock code. Try again.")
+
+@app.route("/ransomware-malware", methods=["GET", "POST"])
+def ransomware_malware():
+    # عند فتح الصفحة، إما أن تكون مقفلة أو تعرض الأزرار
+    if session.get("locked"):
+        return render_template("ransomware-malware.html", locked=True, error=None)
+    return render_template("ransomware-malware.html", locked=False, error=None)
 ''' ------------------------------------------------------------------ '''
 ''' ------------------------------------------------------------------ '''
 
