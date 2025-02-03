@@ -251,7 +251,7 @@ html {
     position: relative;
     width: 40px;
     height: 40px;
-    background-image: url(src/png/crescent-moon\ \(1\).png);
+    background-image: url(/static/png/crescent-moon\ \(1\).png);
     background-size: 50%;
     transition-duration: .5s;
     cursor: pointer
@@ -260,7 +260,7 @@ html {
 #switchforvisualmode:checked+#labelforvisualmode {
     transform: rotate(360deg);
     transition-duration: .5s;
-    background-image: url(src/png/sun.png);
+    background-image: url(/static/png/sun.png);
     background-size: 60%
 }
 
