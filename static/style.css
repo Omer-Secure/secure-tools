@@ -1158,8 +1158,8 @@ noscript {
     letter-spacing: .5px;
     font-size: 1.6rem;
     backdrop-filter: blur(5px);
-    font-weight: 500
-    dir: rtl;
+    font-weight: 500;
+    direction: rtl;
 }
 
 .cta,
