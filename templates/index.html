@@ -392,6 +392,82 @@
     </section>
     <!-- skills section ends -->
 
+
+
+
+
+
+    <!-- Certificates section starts -->
+    <section class="skills-section-container" id="skills">
+      <div class="skills-section">
+        <div class="section-heading" data-aos="fade-up">
+          <h2 class="section-heading-article" tabindex="0" aria-label="skills heading">
+            &#60;/Certificates & Courses&#62;
+          </h2>
+          <p class="sectionHeadingP"></p>
+        </div>
+
+        <div class="frontend-dev-section">
+          <h3 class="frontend-dev-heading" data-aos="fade-up" tabindex="0"
+            aria-label="As a frontend a developer these are the skills i have">
+            Tech Stack
+          </h3>
+
+          <ul class="tech-stack-wrapper">
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/Linux-100-Fundamentals-tcmSecurity.jpg') }}" class="tech-stack-logo" alt="Linux 100: Fundamentals From TCM-Security" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">Linux 100: Fundamentals From TCM-Security</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/Cisco-Introduction-to-Cybersecurity-Badge.jpg') }}" class="tech-stack-logo" alt="Introduction to Cybersecurity From Cisco" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">Introduction to Cybersecurity From Cisco</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/CTF-basics&Techniques.png') }}" class="tech-stack-logo" alt="CTF basics & Techniques From Cyber-Security-Club" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">CTF basics & Techniques From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/دورة الامن السيبراني وتطبيقات الويب .JPG') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">دورة الامن السيبراني وتطبيقات الويب من مجتمع Google السعودي للمطورين</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/التصدي للتهديدات السيبرانية وتعزيز الوعي الرقمي.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">التصدي للتهديدات السيبرانية وتعزيز الوعي الرقمي</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/دورة التحقيق الجنائي الرقمي .jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">دورة التحقيق الجنائي الرقمي</span>
+            </li>
+
+            <!--
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/دورة الأمن السيبراني لمعهد توب ارب ومنصة كوتشتك.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">دورة الأمن السيبراني لمعهد توب ارب ومنصة كوتشتك</span>
+            </li>
+            
+            <li class="tech-stack-box certificates-box" data-aos="fade-up">
+              <img src="{{ url_for('static', filename='certificates/دبلوم الذاكره الخارقه_دبلوم الذاكره الخارقه.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">دبلوم الذاكره الخارقه</span>
+            </li>
+            -->
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="imageModal">
+      <span class="close" id="closeModal">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <div id="caption" class="modal-caption"></div>
+    </div>
+    <!-- Certificates section ends -->
+
     <!-- projects section starts -->
     <section class="projects-section-container" id="projects">
       <div class="projects-section-div">
@@ -742,6 +818,42 @@
       });
     });
   </script>
+
+  <!-- -------------------------------------------------- -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const captionText = document.getElementById('caption');
+      const closeModal = document.getElementById('closeModal');
+
+      document.querySelectorAll('.certificates-box img').forEach(img => {
+        img.addEventListener('click', function () {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.nextElementSibling.innerHTML;
+
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeModal.onclick = function () {
+        modal.style.display = "none";
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = 'auto';
+        }
+      }
+    });
+  </script>
+<!-- -------------------------------------------------- -->
 
 </body>
 
