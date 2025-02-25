@@ -393,10 +393,6 @@
     <!-- skills section ends -->
 
 
-
-
-
-
     <!-- Certificates section starts -->
     <section class="skills-section-container" id="skills">
       <div class="skills-section">
@@ -826,34 +822,45 @@
       const modalImg = document.getElementById('modalImage');
       const captionText = document.getElementById('caption');
       const closeModal = document.getElementById('closeModal');
+      const hamburger = document.querySelector('.hamburger'); // تحديد عنصر .hamburger
 
+      // فتح الـ Modal عند النقر على الصورة
       document.querySelectorAll('.certificates-box img').forEach(img => {
         img.addEventListener('click', function () {
-          modal.style.display = "block";
+          modal.style.display = 'block';
           modalImg.src = this.src;
           captionText.innerHTML = this.nextElementSibling.innerHTML;
 
-          modal.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
+          // إخفاء .hamburger بدون تغيير تخطيط الصفحة
+          if (hamburger) {
+            hamburger.style.visibility = 'hidden';
+            hamburger.style.opacity = '0';
+          }
         });
       });
 
-      closeModal.onclick = function () {
-        modal.style.display = "none";
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = 'auto';
-      }
+      // إغلاق الـ Modal
+      function closeModalFunction() {
+        modal.style.display = 'none';
 
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-          modal.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = 'auto';
+        // إظهار .hamburger مجددًا دون تغيير موضعه
+        if (hamburger) {
+          hamburger.style.visibility = 'visible';
+          hamburger.style.opacity = '1';
         }
       }
+
+      closeModal.addEventListener('click', closeModalFunction);
+
+      // إغلاق عند النقر خارج الصورة
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          closeModalFunction();
+        }
+      });
     });
   </script>
-<!-- -------------------------------------------------- -->
+  <!-- -------------------------------------------------- -->
 
 </body>
 
