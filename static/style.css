@@ -1102,8 +1102,9 @@ noscript {
 
 .tech-stack-wrapper .tech-stack-box,
 .tooltip {
+    display: flex;
     align-items: center;
-    display: flex
+    justify-content: center;
 }
 
 .tech-stack-wrapper .tech-stack-box {
@@ -1130,14 +1131,9 @@ noscript {
     --base-img-height: 65%;
     width: var(--base-img-width);
     height: var(--base-img-height);
-}
-
-.tech-stack-wrapper .certificates-box img {
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    /*
-    width: calc(var(--base-img-width) + 5%);
-    height: calc(var(--base-img-height) + 10%);
-    */
 }
 
 .tech-stack-wrapper .tech-stack-box:hover .tooltip {
@@ -1172,7 +1168,7 @@ footer {
 }
 
 .projects-section-container {
-    padding: 150px 0;
+    padding: 0px 0px 150px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2067,6 +2063,27 @@ footer {
     color: #ccc;
 }
 
+.prev,
+.next {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev {
+    left: 5%;
+    top: 55%;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 5%;
+    top: 55%;
+    transform: translateY(-50%);
+}
+
 .modal-caption {
     margin: auto;
     display: block;
@@ -2074,4 +2091,47 @@ footer {
     text-align: center;
     color: #ccc;
     padding: 10px 0;
+}
+
+
+.gallery-controls {
+    display: flex;
+    overflow-x: auto;
+    padding: 15px 0;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border: none;
+    background-color: #e9ecef;
+    color: var(--color-dark-mode);
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-family: fira code;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tech-stack-wrapper {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-content: flex-start;
+}
+
+.tech-stack-wrapper .tech-stack-box {
+    transition: all 0.3s ease;
+    margin: 0;
 }
