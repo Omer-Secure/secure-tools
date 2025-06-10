@@ -409,45 +409,131 @@
             Tech Stack
           </h3>
 
+          <div class="gallery-controls">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="tcm-security">TCM-Security</button>
+            <button class="filter-btn" data-filter="cisco">Cisco</button>
+            <button class="filter-btn" data-filter="greenarmor">GreenArmor</button>
+            <button class="filter-btn" data-filter="udemy">Udemy</button>
+            <button class="filter-btn active" data-filter="etc">etc</button>
+          </div>
+
           <ul class="tech-stack-wrapper">
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/Linux-100-Fundamentals-tcmSecurity.jpg') }}" class="tech-stack-logo" alt="Linux 100: Fundamentals From TCM-Security" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <!-- TCM-Security Certificates -->
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="tcm-security">
+              <img src="{{ url_for('static', filename='certificates/tcm-security/linux-100-fundamentals.jpg') }}"
+                class="tech-stack-logo" alt="Linux 100: Fundamentals From TCM-Security" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
               <span class="tooltip">Linux 100: Fundamentals From TCM-Security</span>
             </li>
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="tcm-security">
+              <img src="{{ url_for('static', filename='certificates/tcm-security/programming-100-fundamentals.jpg') }}"
+                class="tech-stack-logo" alt="Programming 100: Fundamentals From TCM-Security" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">Programming 100: Fundamentals From TCM-Security</span>
+            </li>
 
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/Cisco-Introduction-to-Cybersecurity-Badge.jpg') }}" class="tech-stack-logo" alt="Introduction to Cybersecurity From Cisco" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <!-- Cisco Certificates -->
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="cisco">
+              <img src="{{ url_for('static', filename='certificates/cisco/Introduction-to-Cybersecurity-Badge.jpg') }}"
+                class="tech-stack-logo" alt="Introduction to Cybersecurity From Cisco" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
               <span class="tooltip">Introduction to Cybersecurity From Cisco</span>
             </li>
 
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/CTF-basics&Techniques.png') }}" class="tech-stack-logo" alt="CTF basics & Techniques From Cyber-Security-Club" role="button" tabindex="0" aria-label="Click to enlarge image" />
-              <span class="tooltip">CTF basics & Techniques From Cyber-Security-Club</span>
+            <!-- GreenArmor Certificates -->
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="greenarmor">
+              <img src="{{ url_for('static', filename='certificates/greenarmor/bugbounty-workshop.jpg') }}"
+                class="tech-stack-logo" alt="BugBounty-Workshop From GreenArmor" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">BugBounty-Workshop From GreenArmor</span>
             </li>
 
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/دورة الامن السيبراني وتطبيقات الويب .JPG') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <!-- Udemy Certificates -->
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="udemy">
+              <img src="{{ url_for('static', filename='certificates/udemy/wordpress-security.jpg') }}"
+                class="tech-stack-logo" alt="Wordpress-Security From Udemy" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">Wordpress-Security From Udemy</span>
+            </li>
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="udemy">
+              <img
+                src="{{ url_for('static', filename='certificates/udemy/Complete-Linux-Training-Course-to-Get-Your-Ideal-IT-Job.jpg') }}"
+                class="tech-stack-logo" alt="Complete-Linux-Training-Course-to-Get-Your-Ideal-IT-Job From Udemy"
+                role="button" tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">Complete-Linux-Training-Course-to-Get-Your-Ideal-IT-Job From Udemy</span>
+            </li>
+
+            <!-- ETC Certificates -->
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/ctf-basics-techniques.png') }}"
+                class="tech-stack-logo" alt="CTF basics & Techniques From Cyber-Security-Club" role="button"
+                tabindex="0" aria-label="Click to enlarge image" />
+              <span class="tooltip">CTF Basics & Techniques From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/ctf-challenges-series.png') }}"
+                class="tech-stack-logo" alt="CTF-Challenges-Series From Cyber-Security-Club" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">CTF-Challenges-Series From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/mastering-wireshark.png') }}"
+                class="tech-stack-logo" alt="Mastering-Wireshark From Cyber-Security-Club" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">Mastering-Wireshark From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/scanning-zero-to-hero.png') }}"
+                class="tech-stack-logo" alt="Scanning-Zero-to-Hero From Cyber-Security-Club" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">Scanning-Zero-to-Hero From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/أشهر ثغرات الويب.png') }}"
+                class="tech-stack-logo" alt="أشهر ثغرات الويب From Cyber-Security-Club" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">أشهر ثغرات الويب From Cyber-Security-Club</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/شهادة الأمان الرقمي.png') }}"
+                class="tech-stack-logo" alt="شهادة الأمان الرقمي من جمعية جسور الشبابية" role="button" tabindex="0"
+                aria-label="Click to enlarge image" />
+              <span class="tooltip">شهادة الأمان الرقمي من جمعية جسور الشبابية</span>
+            </li>
+
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/دورة الامن السيبراني وتطبيقات الويب .JPG') }}"
+                class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
               <span class="tooltip">دورة الامن السيبراني وتطبيقات الويب من مجتمع Google السعودي للمطورين</span>
             </li>
 
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/التصدي للتهديدات السيبرانية وتعزيز الوعي الرقمي.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img
+                src="{{ url_for('static', filename='certificates/etc/التصدي للتهديدات السيبرانية وتعزيز الوعي الرقمي.jpg') }}"
+                class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
               <span class="tooltip">التصدي للتهديدات السيبرانية وتعزيز الوعي الرقمي</span>
             </li>
 
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/دورة التحقيق الجنائي الرقمي .jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="etc">
+              <img src="{{ url_for('static', filename='certificates/etc/دورة التحقيق الجنائي الرقمي .jpg') }}"
+                class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
               <span class="tooltip">دورة التحقيق الجنائي الرقمي</span>
             </li>
 
             <!--
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/دورة الأمن السيبراني لمعهد توب ارب ومنصة كوتشتك.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="all" >
+              <img src="{{ url_for('static', filename='certificates/etc/دورة الأمن السيبراني لمعهد توب ارب ومنصة كوتشتك.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
               <span class="tooltip">دورة الأمن السيبراني لمعهد توب ارب ومنصة كوتشتك</span>
             </li>
             
-            <li class="tech-stack-box certificates-box" data-aos="fade-up">
-              <img src="{{ url_for('static', filename='certificates/دبلوم الذاكره الخارقه_دبلوم الذاكره الخارقه.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
+            <li class="tech-stack-box certificates-box" data-aos="fade-up" data-category="all">
+              <img src="{{ url_for('static', filename='certificates/etc/دبلوم الذاكره الخارقه_دبلوم الذاكره الخارقه.jpg') }}" class="tech-stack-logo" alt="" role="button" tabindex="0" aria-label="Click to enlarge image" />
               <span class="tooltip">دبلوم الذاكره الخارقه</span>
             </li>
             -->
@@ -459,6 +545,8 @@
 
     <div class="modal" id="imageModal">
       <span class="close" id="closeModal">&times;</span>
+      <span class="prev">&#10094;</span>
+      <span class="next">&#10095;</span>
       <img class="modal-content" id="modalImage">
       <div id="caption" class="modal-caption"></div>
     </div>
@@ -764,6 +852,8 @@
   </footer>
   <!-- footer ends here -->
 
+
+
   <script src="{{ url_for('static', filename='main.js') }}"></script>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -816,6 +906,7 @@
   </script>
 
   <!-- -------------------------------------------------- -->
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const modal = document.getElementById('imageModal');
@@ -860,8 +951,127 @@
       });
     });
   </script>
-  <!-- -------------------------------------------------- -->
 
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const photos = document.querySelectorAll(".certificates-box");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption"); // العنصر الذي يعرض التسمية
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+    let currentIndex = 0;
+    let filteredPhotos = [];
+
+    function applyFilter(filter) {
+      filteredPhotos = [];
+      photos.forEach(photo => {
+        const category = photo.getAttribute("data-category");
+        if (filter === "all" || category === filter) {
+          photo.style.display = "flex";
+          photo.style.opacity = "1";
+          filteredPhotos.push(photo);
+        } else {
+          photo.style.display = "none";
+          photo.style.opacity = "0";
+        }
+      });
+    }
+
+    // تطبيق الفلتر الافتراضي (etc) عند التحميل
+    document.addEventListener('DOMContentLoaded', function () {
+      const etcBtn = document.querySelector('.filter-btn[data-filter="etc"]');
+      if (etcBtn) {
+        etcBtn.classList.add("active");
+        applyFilter("etc");
+      }
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.getAttribute("data-filter");
+        applyFilter(filter);
+      });
+    });
+
+    photos.forEach((photo, index) => {
+      photo.addEventListener("click", () => {
+        currentIndex = filteredPhotos.indexOf(photo);
+        modal.style.display = "block";
+        modalImg.src = photo.querySelector("img").src;
+        // تحديث التسمية عند النقر على الصورة
+        captionText.innerHTML = photo.querySelector(".tooltip").innerHTML;
+      });
+    });
+
+    function showSlide(direction) {
+      currentIndex = (currentIndex + direction + filteredPhotos.length) % filteredPhotos.length;
+      const currentPhoto = filteredPhotos[currentIndex];
+      modalImg.src = currentPhoto.querySelector("img").src;
+      // تحديث التسمية عند التنقل بالسهم
+      captionText.innerHTML = currentPhoto.querySelector(".tooltip").innerHTML;
+    }
+
+    nextBtn.onclick = () => showSlide(1);
+    prevBtn.onclick = () => showSlide(-1);
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
+  <!-- -------------------------------------------------- -->
+  <!--
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const photos = document.querySelectorAll(".photo-item");
+    const modal = document.getElementById("slideshow-modal");
+    const modalImg = document.getElementById("slideshow-image");
+    const closeBtn = document.querySelector(".close");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+    const toggleTheme = document.getElementById("themeToggle");
+    let currentIndex = 0;
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.getAttribute("data-filter");
+        photos.forEach(photo => {
+          const category = photo.getAttribute("data-category");
+          photo.style.display = filter === "all" || category === filter ? "block" : "none";
+        });
+      });
+    });
+
+    const photoList = Array.from(photos);
+    photoList.forEach((photo, index) => {
+      photo.addEventListener("click", () => {
+        currentIndex = index;
+        modal.style.display = "block";
+        modalImg.src = photo.querySelector("img").src;
+      });
+    });
+
+    closeBtn.onclick = () => modal.style.display = "none";
+    nextBtn.onclick = () => showSlide(1);
+    prevBtn.onclick = () => showSlide(-1);
+
+    function showSlide(direction) {
+      currentIndex = (currentIndex + direction + photoList.length) % photoList.length;
+      modalImg.src = photoList[currentIndex].querySelector("img").src;
+    }
+
+    toggleTheme.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+-->
 </body>
 
 </html>
