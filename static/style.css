@@ -2091,6 +2091,7 @@ footer {
     text-align: center;
     color: #ccc;
     padding: 10px 0;
+    direction: rtl;
 }
 
 
