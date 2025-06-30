@@ -63,13 +63,11 @@
             </div>
             <div class="navbar-tabs" id="navbar-tabs">
                 <ul class="navbar-tabs-ul">
-                  {% block header_home %}
                     <li class="home activeThistab" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="100">
                         <a href="#home" tabindex="0" aria-label="Home menu button">
                             &#60;/Home&#62;
                         </a>
                     </li>
-                  {% endblock %}
 
                   {% block header_whoami %}
                     <li class="about" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="300">
@@ -80,9 +78,17 @@
                   {% endblock %}
 
                   {% block header_skills %}
-                    <li class="skills" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="500">
+                    <li class="skills" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="300">
                         <a href="#skills" aria-label="skills menu button">
                             &#60;/Skills&#62;
+                        </a>
+                    </li>
+                  {% endblock %}
+
+                  {% block header_certificates %}
+                    <li class="skills" class="navbar-tabs-li" data-aos="fade-down" data-aos-delay="500">
+                        <a href="#certificates" aria-label="skills menu button">
+                            &#60;/Certificates&#62;
                         </a>
                     </li>
                   {% endblock %}
@@ -108,13 +114,123 @@
         </div>
     </header>
     <!-- header Ends here -->
-{% block body %}
-
-{% endblock %}
 
 
+  
+  <main>
+    <!-- hamburger -->
+    <div class="hamburger" id="hamburger" data-aos="fade">
+      <div class="hamburgerbase">
+        <button id="hamburger-button" onclick="hamburgerMenu()" tabindex="0" aria-label="Menu Button">
+          <span class="burger-bar" id="burger-bar1"></span>
+          <span class="burger-bar" id="burger-bar2"></span>
+          <span class="burger-bar" id="burger-bar3"></span>
+        </button>
+      </div>
+    </div>
+    <!-- hamburger -->
+    <div class="mobiletogglemenu" id="mobiletogglemenu">
+      <ul class="mobile-navbar-tabs-ul" id="mobile-ul">
+        <li id="home-mobile-tab" class="mobile-navbar-tabs-li home activeThismobiletab" onclick="hidemenubyli()">
+          <a href="#home" tabindex="0" aria-label="Home menu button">
+            &#60;/Home&#62;
+          </a>
+        </li>
+        
+        {% block mobile_whoami %}
+        <li id="aboutme-mobile-tab" class="mobile-navbar-tabs-li about" onclick="hidemenubyli()">
+          <a href="#about" tabindex="0" aria-label="about menu button">
+            &#60;/Whoami&#62;
+          </a>
+        </li>
+        {% endblock %}
+
+        {% block mobile_skills %}
+        <li id="skills-mobile-tab" class="mobile-navbar-tabs-li skills" onclick="hidemenubyli()">
+          <a href="#skills" tabindex="0" aria-label="skills menu button">
+            &#60;/Skills&#62;
+          </a>
+        </li>
+        {% endblock %}
+
+        {% block mobile_certificates %}
+        <li id="skills-mobile-tab" class="mobile-navbar-tabs-li skills" onclick="hidemenubyli()>
+          <a href="#certificates tabindex="0" aria-label="skills menu button">
+            &#60;/Certificates&#62;
+          </a>
+        </li>
+        {% endblock %}
+
+        {% block mobile_projects %}
+        <li id="projects-mobile-tab" class="mobile-navbar-tabs-li projects" onclick="hidemenubyli()">
+          <a href="#projects" tabindex="0" aria-label="projects menu button">
+            &#60;/Projects&#62;
+          </a>
+        </li>
+        {% endblock %}
+
+        {% block mobile_portfolio %}
+        <li id="aboutme-mobile-tab" class="mobile-navbar-tabs-li about" onclick="hidemenubyli()">
+          <a href="https://omer-secure.onrender.com/" tabindex="0" aria-label="about menu button">
+            &#60;/Portfolio&#62;
+          </a>
+        </li>
+        {% endblock %}
+      </ul>
+    </div>
+    <!-- mobile toggle menu ends -->
 
 
+    
+    <!-- landing page ends here -->
+    <section class="landing-page-container" id="home">
+      <div class="blob"></div>
+
+      <div class="text-content">
+        {% block articles %}
+
+        {% endblock %}
+
+        <div class="contact-btn-div" data-aos="fade-up" data-aos-delay="800">
+          <a href="mailto:omer.kh.bawazir@gmail.com" tabindex="-1">
+            <button class="letsTalkBtn">
+              <p class="letsTalkBtn-text">Let's Talk!</p>
+              <span class="letsTalkBtn-BG"></span>
+            </button></a>
+          <div class="setting-container" id="setting-container">
+            <input type="checkbox" id="switchforsetting" onclick="settingtoggle()" />
+
+            <label for="switchforsetting" class="needtobeinvert" id="labelforsetting" tabindex="0"
+              aria-label="settings for sound and appearance"></label>
+
+            <div class="visualmodetogglebuttoncontainer" id="visualmodetogglebuttoncontainer">
+              <input type="checkbox" id="switchforvisualmode" onclick="visualmode()" />
+              <label for="switchforvisualmode" id="labelforvisualmode" tabindex="0"
+                aria-label="switch appearance"></label>
+            </div>
+
+            <div class="soundtogglebuttoncontainer" id="soundtogglebuttoncontainer">
+              <input type="checkbox" id="switchforsound" onclick="playpause()" />
+              <label for="switchforsound" id="labelforsound" tabindex="0" aria-label="switch sound"
+                class="needtobeinvert"></label>
+            </div>
+          </div>
+          <!-- setting div ends -->
+        </div>
+        <!-- contact-btn-div -->
+      </div>
+    </section>
+    <!-- landing page ends here -->
+
+
+
+    {% block about_section %}{% endblock %}
+    {% block skills_section %}{% endblock %}
+    {% block certificates_section %}{% endblock %}
+    {% block projects_section %}{% endblock %}
+
+</main>
+  <!-- main ends here -->
 
 
 
@@ -206,11 +322,60 @@
 
 
 
+
   
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+  
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script>
+    function openURL() {
+      var url = "{{ url_for('static', filename='Omer_Resume.pdf') }}";
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+  <script>
+    const cursorInner = document.getElementById("cursor-inner");
+    const cursorOuter = document.getElementById("cursor-outer");
+    const links = document.querySelectorAll("a,label,button");
+
+    document.addEventListener("mousemove", function (e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      cursorInner.style.left = `${posX}px`;
+      cursorInner.style.top = `${posY}px`;
+
+      // cursorOuter.style.left = `${posX}px`;
+      // cursorOuter.style.top = `${posY}px`;
+
+      cursorOuter.animate(
+        {
+          left: `${posX}px`,
+          top: `${posY}px`,
+        },
+        { duration: 500, fill: "forwards" }
+      );
+
+      links.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          cursorInner.classList.add("hover");
+          cursorOuter.classList.add("hover");
+        });
+        link.addEventListener("mouseleave", () => {
+          cursorInner.classList.remove("hover");
+          cursorOuter.classList.remove("hover");
+        });
+      });
+    });
+  </script>
+
   
 </body>
 </html>
-
-
-  
-
