@@ -2,26 +2,25 @@
 
 {% block head_title %}Omer Bawazir | Portfolio{% endblock %}
 
-{% block head_style %}
-{% endblock %}
+{% block head_style %} {% endblock %}
 
 
 <!-- Body Header Desktop -->
-   {% block header_whoami %}{% endblock %}
-   <!--{% block header_skills %}{% endblock %}-->
-   <!--{% block mobile_certificates %}-->
+   {% block header_whoami %} {% endblock %}
+   <!--{% block header_skills %} {% endblock %}-->
+   <!--{% block header_certificates %} {% endblock %}-->
    <!--{% block header_projects %}{% endblock %}-->
-   {% block header_portfolio %}{% endblock %}
+   {% block header_portfolio %} {% endblock %}
 
 
 
 
 
 <!-- Body Header Mobile -->
-   {% block mobile_whoami %}{% endblock %}
-   <!--{% block mobile_skills %}{% endblock %}-->
-   <!--{% block mobile_certificates %}
-   <!--{% block mobile_projects %}{% endblock %}-->
+   {% block mobile_whoami %} {% endblock %}
+   <!--{% block mobile_skills %} {% endblock %}-->
+   <!--{% block mobile_certificates %} {% endblock %}-->
+   <!--{% block mobile_projects %} {% endblock %}-->
    {% block mobile_portfolio %}{% endblock %}
 
 
@@ -162,7 +161,7 @@
 {% endblock %}
 
 
- {% block skills_section %}
+{% block skills_section %}
     <!-- skills section starts -->
     <section class="skills-section-container" id="skills">
       <div class="skills-section">
@@ -656,7 +655,7 @@
 
 
 
-
+{% block scripts_section %}
   <!-- -------------------------------------------------- -->
 
   <script>
@@ -824,3 +823,4 @@
     });
   </script>
 -->
+{% endblock %}
